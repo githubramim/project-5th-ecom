@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E‑commerce</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="overlay" id="overlay"></div>
+    <div class="toast" id="toast"></div>
+
+    <header>
+      <div class="container header-wrap">
+        <a href="#" class="logo"
+          ><span class="dot"></span><span>ShopThings</span></a
+        >
+        <nav class="nav">
+          <a href="#home">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#flash">Flash Sale</a>
+          <a href="#brands">Brands</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="spacer"></div>
+        <div class="search">
+          <svg
+            class="icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 21l-4.35-4.35"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <circle
+              cx="10"
+              cy="10"
+              r="7"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+          </svg>
+          <input
+            id="search"
+            placeholder="Search products... (e.g. phone, shoe)"
+          />
+        </div>
+        <div class="actions">
+          <button class="btn ghost" id="langBtn" title="Language">BN/EN</button>
+          <button class="btn ghost" id="modeBtn" title="Dark/Light">🌙</button>
+          <button class="btn ghost" id="wishBtn" title="Wishlist">
+            ♥ <span class="badge" id="wishCount">0</span>
+          </button>
+          <button class="btn" id="cartBtn" title="Cart">
+            🛒 <span class="badge" id="cartCount">0</span>
+          </button>
+          <button class="btn primary" id="loginBtn">Login</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero container" id="home">
+      <div class="hero-inner">
+        <div class="card pad">
+          <h1>এই সিজনে বিশাল ডিসকাউন্ট লুফে নিন 🔥</h1>
+          <p>
+            Electronics, Fashion, Grocery — সব কিছুর উপর ফ্ল্যাট অফার। Limited
+            time only.
+          </p>
+          <div class="brand-row" id="brands">
+            <span class="chip">Apple</span>
+            <span class="chip">Samsung</span>
+            <span class="chip">Xiaomi</span>
+            <span class="chip">Nike</span>
+            <span class="chip">Adidas</span>
+            <span class="chip">Sony</span>
+            <span class="chip">Lenovo</span>
+          </div>
+        </div>
+        <div class="banner card" id="flash">
+          <h3>⚡ Flash Sale</h3>
+          <p class="muted">শুধু আজ — সীমিত সময়!</p>
+          <div style="display: flex; gap: 8px; margin-top: 10px">
+            <button class="btn primary" id="grabNow">Grab Now</button>
+            <button class="btn">See All</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container layout" id="shop">
+      <aside>
+        <div class="card pad aside-group">
+          <h4>Filters</h4>
+          <div class="field">
+            <label>Price Range: <span id="priceLabel"></span></label>
+            <input
+              type="range"
+              min="0"
+              max="2000"
+              value="2000"
+              class="range"
+              id="priceRange"
+            />
+          </div>
+          <div class="field">
+            <label>Category</label>
+            <div class="checkbox">
+              <input type="checkbox" class="cat" value="electronics" checked />
+              <span>Electronics</span>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="cat" value="fashion" checked />
+              <span>Fashion</span>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="cat" value="grocery" checked />
+              <span>Grocery</span>
+            </div>
+          </div>
+          <div class="field">
+            <label>Brand</label>
+            <div class="checkbox">
+              <input type="checkbox" class="brand" value="Apple" /> Apple
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="brand" value="Samsung" /> Samsung
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="brand" value="Xiaomi" /> Xiaomi
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="brand" value="Sony" /> Sony
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="brand" value="Nike" /> Nike
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" class="brand" value="Adidas" /> Adidas
+            </div>
+          </div>
+          <div class="field">
+            <label>Rating</label>
+            <div class="checkbox">
+              <input type="radio" name="rate" value="4" /> ⭐⭐⭐⭐ & up
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="rate" value="3" /> ⭐⭐⭐ & up
+            </div>
+            <div class="checkbox">
+              <input type="radio" name="rate" value="0" checked /> Any
+            </div>
+          </div>
+          <button class="btn" id="clearFilters">Clear Filters</button>
+        </div>
+
+        <div class="card pad aside-group">
+          <h4>Newsletter</h4>
+          <div class="field">
+            <input class="input" id="subEmail" placeholder="Enter email" />
+          </div>
+          <button class="btn primary" id="subBtn">Subscribe</button>
+        </div>
+      </aside>
+
+      <main>
+        <div class="toolbar">
+          <select id="sort" class="select">
+            <option value="pop">Sort: Popular</option>
+            <option value="new">Newest</option>
+            <option value="lh">Price: Low → High</option>
+            <option value="hl">Price: High → Low</option>
+          </select>
+          <button class="btn ghost" id="gridBtn">Grid</button>
+          <button class="btn ghost" id="listBtn">List</button>
+          <div class="spacer"></div>
+          <div class="muted" id="countInfo"></div>
+        </div>
+
+        <div class="grid" id="grid"></div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            margin: 12px 0;
+            gap: 8px;
+          "
+        >
+          <button class="btn" id="loadMore">Load More</button>
+        </div>
+      </main>
+    </section>
+
+    <button class="btn primary sticky-cart" id="stickyCart">
+      🛒 View Cart (<span id="cartCountSticky">0</span>)
+    </button>
+
+    <aside class="drawer" id="cartDrawer">
+      <header class="row" style="justify-content: space-between">
+        <strong>🛒 Your Cart</strong>
+        <button class="btn ghost" id="closeCart">✖</button>
+      </header>
+      <div class="content">
+        <div id="cartItems"></div>
+        <div class="summary">
+          <div class="field">
+            <input
+              id="coupon"
+              class="input"
+              placeholder="Have a coupon? e.g. SAVE10"
+            />
+          </div>
+          <button class="btn" id="applyCoupon">Apply Coupon</button>
+          <div style="margin-top: 10px">
+            <div>Subtotal: <strong id="subTotal">$0.00</strong></div>
+            <div>Shipping: <strong id="ship">$0.00</strong></div>
+            <div>Discount: <strong id="disc">$0.00</strong></div>
+            <div
+              style="
+                border-top: 1px dashed var(--border);
+                margin-top: 6px;
+                padding-top: 6px;
+              "
+            >
+              Grand Total: <strong id="grand">$0.00</strong>
+            </div>
+          </div>
+          <button class="btn primary" id="goCheckout" style="margin-top: 10px">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <aside
+      class="drawer"
+      id="wishDrawer"
+      style="right: auto; left: 0; transform: translateX(-100%)"
+    >
+      <header class="row" style="justify-content: space-between">
+        <strong>♥ Wishlist</strong>
+        <button class="btn ghost" id="closeWish">✖</button>
+      </header>
+      <div class="content">
+        <div id="wishItems"></div>
+      </div>
+    </aside>
+
+    <div class="modal" id="quickModal">
+      <div class="box">
+        <header>
+          <strong id="qTitle">Product</strong>
+          <button class="btn ghost" id="closeQuick">✖</button>
+        </header>
+        <div class="body">
+          <div class="row">
+            <div class="col">
+              <div class="product img" id="qImg" style="height: 220px">
+                Image
+              </div>
+            </div>
+            <div class="col">
+              <div id="qPrice" class="price" style="margin-bottom: 8px"></div>
+              <div class="muted" id="qDesc" style="margin-bottom: 8px"></div>
+              <div class="row" style="gap: 8px">
+                <button class="btn" id="qAdd">Add to Cart</button>
+                <button class="btn ghost" id="qWish">♥ Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+      <div class="box">
+        <header>
+          <strong>Checkout</strong>
+          <button class="btn ghost" id="closeCheckout">✖</button>
+        </header>
+        <div class="body">
+          <div class="steps">
+            <div class="step active" data-step="1">1. Address</div>
+            <div class="step" data-step="2">2. Payment</div>
+            <div class="step" data-step="3">3. Review</div>
+          </div>
+          <div id="step1">
+            <div class="field">
+              <label>Full Name</label
+              ><input
+                class="input"
+                id="name"
+                placeholder="e.g. Tanvir Bin Faruk Ramim"
+              />
+            </div>
+            <div class="field">
+              <label>Phone</label
+              ><input class="input" id="phone" placeholder="01XXXXXXXXX" />
+            </div>
+            <div class="field">
+              <label>Address</label
+              ><input
+                class="input"
+                id="addr"
+                placeholder="House No, Road, City"
+              />
+            </div>
+            <button class="btn primary" id="toStep2">Next → Payment</button>
+          </div>
+          <div id="step2" style="display: none">
+            <div class="field">
+              <label>Payment Method</label>
+              <select id="payMethod">
+                <option>Cash on Delivery</option>
+                <option>Bkash</option>
+                <option>Nagad</option>
+                <option>Card</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <button class="btn" id="back1">← Back</button>
+            <button class="btn primary" id="toStep3">Next → Review</button>
+          </div>
+          <div id="step3" style="display: none">
+            <div id="review"></div>
+            <button class="btn" id="back2">← Back</button>
+            <button class="btn primary" id="placeOrder">Place Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <div class="logo">
+            <span class="dot"></span><span>ShopStack</span>
+          </div>
+          <p class="muted">Fast delivery • Secure payment • Easy return</p>
+          <div class="brand-row">
+            <span class="chip">Bkash</span><span class="chip">Nagad</span
+            ><span class="chip">Visa</span><span class="chip">MasterCard</span>
+          </div>
+        </div>
+        <div>
+          <h4>Social Media of Developer</h4>
+          <a href="https://www.facebook.com/TanvirRamimDM">Facebook</a><br />
+          <a href="https://github.com/githubramim">Github</a><br />
+          <a href="https://wa.me/8801889421708">WhatsApp</a><br />
+        </div>
+        <div>
+          <h4>Support</h4>
+          <p class="muted">📞 +8801889421708</p>
+          <p class="muted">✉ support@ramim.shop</p>
+        </div>
+        <div>
+          <h4>Newsletter</h4>
+          <div class="field">
+            <input class="input" placeholder="Your email" />
+          </div>
+          <button class="btn">Subscribe</button>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
