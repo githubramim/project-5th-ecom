@@ -1,9 +1,9 @@
-# 🛒 ShopStack — E-commerce UI Starter
+# 🛒 ShopThings — E-commerce UI Starter
 
 [🌐 Live Demo](https://githubramim.github.io/project-5th-ecom/) 
 ## 📖 Project Description
 
-**ShopStack** is a fully responsive **E-commerce UI template** built with **HTML, CSS & Vanilla JavaScript**.  
+**ShopThings** is a fully responsive **E-commerce UI template** built with **HTML, CSS & Vanilla JavaScript**.  
 It provides a modern, user-friendly interface for showcasing products and running an online store.
 
 ✨ **Features include:**
@@ -22,7 +22,7 @@ It provides a modern, user-friendly interface for showcasing products and runnin
 
 ## 🖼️ Screenshot
 
-![ShopStack Home Page](Screenshot.png)
+![ShopThings Home Page](screenshot.png)
 
 
 ## ⚡ Features Details
