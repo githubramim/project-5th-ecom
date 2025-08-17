@@ -62,4 +62,4 @@ It provides a modern, user-friendly interface for showcasing products and runnin
 
 1. Clone the project:
 ```bash
-git clone https://github.com/yourusername/shopstack.git
+git clone https://github.com/githubramim/project-5th-ecom.git
