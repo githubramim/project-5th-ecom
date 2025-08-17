@@ -22,7 +22,8 @@ It provides a modern, user-friendly interface for showcasing products and runnin
 
 ## 🖼️ Screenshot
 
-![ShopStack Screenshot](screenshot.png) <!-- Replace with your screenshot -->
+![ShopStack Home Page](Screenshot.png)
+
 
 ## ⚡ Features Details
 
